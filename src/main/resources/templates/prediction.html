@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/header}">
+<head>
+    <title>Test</title>
+</head>
+<body>
+<div class="container-fluid" layout:fragment="content">
+    <form th:action="@{/predictions/save}" method="post">
+        <table>
+            <tr th:each="item: ${result}">
+                <td th:text="${item.match.stage.stage}"></td>
+                <td th:text="${item.match.playAt}"></td>
+                <td th:text="${item.match.team1.team}"></td>
+                <td th:text="${item.match.team2.team}"></td>
+                <td>
+                    <input type="text" size="2" th:name="score1[]" th:value="${item.prediction?.score1}">&nbsp;:&nbsp;
+                    <input type="text" size="2" th:name="score2[]" th:value="${item.prediction?.score2}">
+                    <input type="hidden" name="ids[]" th:value="${item.match.id}">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5"><input type="submit" value="Сохранить" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

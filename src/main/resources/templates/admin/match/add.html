@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/header}">
+<head>
+    <title>Test</title>
+</head>
+<body>
+<div class="container-fluid" layout:fragment="content">
+    <form th:action="@{/admin/match/add}" method="post">
+        <div class="mb-3">
+            <label for="team1">Команда 1</label>
+            <select id="team1" name="team1" class="form-select">
+                <option  th:each="team : ${teams}" th:value="${team.id}" th:text="${team.team}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="team2">Команда 2</label>
+            <select id="team2" name="team2" class="form-select">
+                <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.team}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="datetimepicker2">Время</label>
+            <div class='input-group date' id='datetimepicker2'>
+                <input type='text' class="form-control" name="time"/>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="stage">Стадия</label>
+            <select id="stage" name="stage" class="form-select">
+                <option  th:each="stage : ${stages}" th:value="${stage.id}" th:text="${stage.stage}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="Сохранить"/>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker2').datetimepicker({
+            locale: 'ru'
+        });
+    });
+</script>
+<footer th:replace="fragments/footer" class="sticky-footer bg-white">&nbsp;</footer>
+</body>
+</html>

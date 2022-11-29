@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/header}">
+<head>
+    <title>Test</title>
+</head>
+<body>
+<div class="container-fluid" layout:fragment="content">
+        <table>
+            <tr th:each="item: ${result}">
+                <td th:text="${item.stage.stage}"></td>
+                <td th:text="${item.playAt}"></td>
+                <td th:text="${item.team1.team}"></td>
+                <td th:text="${item.team2.team}"></td>
+                <td>
+                    <form th:action="@{/admin/match/update}" method="post">
+                        <input type="text" size="2" th:name="score1" th:value="${item.score1}" />&nbsp;:&nbsp;
+                        <input type="text" size="2" th:name="score2" th:value="${item.score2}" />
+                        <input type="hidden" name="id" th:value="${item.id}" />
+                </td>
+                <td><input type="submit" value="Сохранить" /></form></td>
+            </tr>
+        </table>
+</div>
+</body>
+</html>
