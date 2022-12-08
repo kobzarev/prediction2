@@ -5,8 +5,31 @@
 </head>
 <body>
 <div class="container-fluid" layout:fragment="content">
-        <table>
-        </table>
+    <table class="table" id="data">
+        <thead>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <!--
+<table class="table">
+    <tr>
+        <th>Дата</th>
+        <th>Матч</th>
+        <th>Результат</th>
+        <th th:each="user: ${table.users}" th:text="${user.nickname}"></th>
+    </tr>
+    <tr th:each="stage: ${table.stages}">
+        <th th:colspan="${table.users.size + 3}" th:text="${stage.stage}"></th>
+    </tr>
+   <tr th:each="row: ${table.matches}">
+        <td th:text="${row.startedAt}"></td>
+        <td th:text="${row.match}"></td>
+        <td th:text="${row.result}"></td>
+        <td th:each="p: ${row.predictions}" th:text="${p.result}"></td>
+    </tr>
+</table>-->
+    <script src="/js/table.js"></script>
 </div>
 </body>
 </html>

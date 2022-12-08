@@ -3,7 +3,7 @@ package com.prediction2.service;
 import com.prediction2.entity.Match;
 import com.prediction2.entity.Prediction;
 import com.prediction2.entity.User;
-import com.prediction2.model.UserPrediction;
+import com.prediction2.dto.UserPrediction;
 import com.prediction2.repository.MatchRepository;
 import com.prediction2.repository.PredictionRepository;
 import org.springframework.stereotype.Service;

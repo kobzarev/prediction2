@@ -1,9 +1,8 @@
-package com.prediction2.model;
+package com.prediction2.dto;
 
 import com.prediction2.entity.Match;
 import com.prediction2.entity.Prediction;
 import groovy.transform.EqualsAndHashCode;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,8 +20,6 @@ public class UserPrediction {
         this.match = match;
         this.prediction = prediction;
 
-        this.isMatchStarted = LocalDateTime.
-                parse(match.getPlayAt(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")).
-                isBefore(LocalDateTime.now());
+        this.isMatchStarted = match.getPlayAt().isBefore(LocalDateTime.now());
     }
 }

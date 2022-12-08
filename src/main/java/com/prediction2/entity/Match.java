@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -38,9 +40,12 @@ public class Match {
     private Stage stage;
 
     @Column(name = "play_at", nullable = false)
-    private String playAt;
+    private LocalDateTime playAt;
 
-    public Match(Team team1, Team team2, Stage stage, String playAt) {
+    @OneToMany(mappedBy = "match")
+    private List<Prediction> predictions;
+
+    public Match(Team team1, Team team2, Stage stage, LocalDateTime playAt) {
         this.team1 = team1;
         this.team2 = team2;
         this.stage = stage;

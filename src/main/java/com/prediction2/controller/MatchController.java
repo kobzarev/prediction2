@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -39,7 +40,7 @@ public class MatchController {
     @PostMapping("/admin/match/add")
     public String create(@RequestParam(value = "team1") Long team1Id,
                          @RequestParam(value = "team2") Long team2Id,
-                         @RequestParam(value = "time") String time,
+                         @RequestParam(value = "time") LocalDateTime time,
                          @RequestParam(value = "stage") Long stageId) {
         matchService.create(new Match(
                 teamService.findById(team1Id),
